@@ -23,6 +23,10 @@ namespace UCP.App.Consola
             BuscarProfesores();
 
             BuscarProfesor(3);
+
+            AddProfesor();
+
+            BuscarProfesores();
         }
 
 
@@ -32,15 +36,15 @@ namespace UCP.App.Consola
         {
             var profesor = new Profesor 
             {
-               nombre = "Felipe",
-               apellidos = "Rios",
-               identificacion = 100000003,
-               correo =  "feliperios.tic@ucaldas.edu.co",
-               telefono ="30000000003",
+               nombre = "Santiago",
+               apellidos = "Murillo",
+               identificacion = 100000001,
+               correo =  "santiagomurillo.tic@ucaldas.edu.co",
+               telefono ="30000000001",
                vehiculo_1 = null,
                vehiculo_2 = null,
-               facultad ="Ciencias Juridicas",
-               departamento = "Derecho",
+               facultad ="Ciencias Computacionales",
+               departamento = "Ingeniería",
                cubiculo ="Tres" 
             };
 

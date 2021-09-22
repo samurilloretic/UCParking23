@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C5qUvskEwXo9CDvz67k6f3sizMI0glqVxQulVPGyQ6+kb9YbKrJBcN/y8rvvRpzkg4DVdtqykn6Qz3ai9CzutQ==",
+  "dgSpecHash": "xIJePTje3aJOeSqCcO608++jwfSXgxge54oBbjG8B1oBDF9xImr71nj8RznxE+rCFp5ODC4FUBWRrge1xxW/WQ==",
   "success": true,
-  "projectFilePath": "C:\\UCParking23\\UCP.App\\UCP.App.Persistencia\\UCP.App.Persistencia.csproj",
+  "projectFilePath": "C:\\Users\\samur\\Documents\\UCParking23\\UCParking23\\UCP.App.Persistencia\\UCP.App.Persistencia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\samur\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\samur\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

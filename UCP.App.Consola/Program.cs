@@ -15,16 +15,11 @@ namespace UCP.App.Consola
             Console.WriteLine("Esto es un mensaje por consola");
             //AddProfesor();
             //BuscarProfesor(1);
-            BuscarProfesor(2);
             //BuscarProfesor(1);
             //EliminarProfesor(1);
             //ActualizarProfesor();
             
-            BuscarProfesores();
-
-            BuscarProfesor(3);
-
-            AddProfesor();
+            BuscarProfesores();                        
 
             BuscarProfesores();
         }

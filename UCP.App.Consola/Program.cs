@@ -22,6 +22,8 @@ namespace UCP.App.Consola
             BuscarProfesores();                        
 
             BuscarProfesores();
+
+            Console.WriteLine("Fin del programa");
         }
 
 

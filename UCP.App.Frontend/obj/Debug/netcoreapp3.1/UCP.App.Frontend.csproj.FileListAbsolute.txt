@@ -81,3 +81,4 @@ C:\UCParking23\UCP.App\UCP.App.Frontend\bin\Debug\netcoreapp3.1\UCP.App.Persiste
 C:\UCParking23\UCP.App\UCP.App.Frontend\bin\Debug\netcoreapp3.1\UCP.App.Dominio.pdb
 C:\UCParking23\UCP.App\UCP.App.Frontend\bin\Debug\netcoreapp3.1\UCP.App.Persistencia.pdb
 C:\UCParking23\UCP.App\UCP.App.Frontend\obj\Debug\netcoreapp3.1\Razor\Pages\Listas\Detalles.cshtml.g.cs
+C:\UCParking23\UCP.App\UCP.App.Frontend\obj\Debug\netcoreapp3.1\Razor\Pages\Listas\Editar.cshtml.g.cs

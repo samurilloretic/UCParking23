@@ -16,7 +16,10 @@
                 <a class="btn btn-primary table-btn" asp-page="./Detalles" asp-route-profesorId="@profesor.id">
                 <i class="fas fa-info-circle" aria-hidden="true"></i></a>
             </td>
-
+            <td>
+                <a class="btn btn-secondary table-btn" asp-page="./Editar" asp-route-profesorId="@profesor.id">
+                <i class="fas fa-address-book fa-lg"></i></a>
+            </td>
         </tr>
     }
 </table>

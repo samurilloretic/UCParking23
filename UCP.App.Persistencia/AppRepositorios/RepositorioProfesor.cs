@@ -1,7 +1,7 @@
 using UCP.App.Dominio;
 using System.Collections.Generic;
 using System.Linq;
-
+using System;
 namespace UCP.App.Persistencia
 
 {
@@ -38,7 +38,7 @@ namespace UCP.App.Persistencia
                 profesorEncontrado.vehiculo_2 = profesor.vehiculo_2;
                 profesorEncontrado.facultad = profesor.facultad;
                 profesorEncontrado.cubiculo = profesor.cubiculo;
-
+                profesorEncontrado.departamento = profesor.departamento;
                 _appContext.SaveChanges();
             }
             return profesorEncontrado;

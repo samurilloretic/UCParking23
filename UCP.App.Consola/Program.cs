@@ -13,15 +13,15 @@ namespace UCP.App.Consola
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Esto es un mensaje por consola");
-            //AddProfesor();
+            AddProfesor();
             //BuscarProfesor(1);
             //BuscarProfesor(1);
             //EliminarProfesor(1);
             //ActualizarProfesor();
             
-            BuscarProfesores();                        
+            //BuscarProfesores();                        
 
-            BuscarProfesores();
+            //BuscarProfesores();
 
             Console.WriteLine("Fin del programa");
         }
@@ -33,11 +33,11 @@ namespace UCP.App.Consola
         {
             var profesor = new Profesor 
             {
-               nombre = "Santiago",
-               apellidos = "Murillo",
-               identificacion = 100000001,
-               correo =  "santiagomurillo.tic@ucaldas.edu.co",
-               telefono ="30000000001",
+               nombre = "Jairo",
+               apellidos = "Maya",
+               identificacion = 100100001,
+               correo =  "jairomaya.tic@ucaldas.edu.co",
+               telefono ="30001000001",
                vehiculo_1 = null,
                vehiculo_2 = null,
                facultad ="Ciencias Computacionales",

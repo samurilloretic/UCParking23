@@ -1,11 +1,11 @@
 using System;
-
+using System.ComponentModel.DataAnnotations;
 namespace UCP.App.Dominio
 {
     public class Persona
     {
         public int id {get;set;}
-
+        [Required]
         public string nombre {get;set;}
 
         public string apellidos {get;set;}

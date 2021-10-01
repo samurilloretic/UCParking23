@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "A2Sezogr4sEzMfi6Qug4aNxe6DIu/rbYj8g6lvZS1M5YJ3aUlyI5Ju/2B9F1upSB5Y2u9iuU2GnbLwG0ZbdDPA==",
+  "dgSpecHash": "vwogjprWWClDLICbxgqSnlbw6XpMWLKXQX3flKZUuu4ni5ElfogU9I0O9eUtKUjEkjX+89QNFKmUkJZQjwcsPQ==",
   "success": true,
   "projectFilePath": "C:\\UCParking23\\UCP.App\\UCP.App.Dominio\\UCP.App.Dominio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\samur\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\samur\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\samur\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\samur\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

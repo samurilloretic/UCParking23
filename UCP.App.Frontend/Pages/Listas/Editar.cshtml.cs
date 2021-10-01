@@ -14,9 +14,16 @@ namespace UCP.App.Frontend.Pages
         [BindProperty]
         public Profesor profesor{get;set;}
 
-        public IActionResult OnGet(int profesorId)
+        public IActionResult OnGet(int? profesorId)
         {
-            profesor = _repoProfesor.GetProfesor(profesorId);
+            if(profesorId.HasValue)
+            {
+                profesor = _repoProfesor.GetProfesor(profesorId.Value);
+            }else
+            {
+                profesor = new Profesor();
+            }
+            
             if(profesor==null)
             {
                 return RedirectToPage("./Personas");
@@ -26,12 +33,19 @@ namespace UCP.App.Frontend.Pages
 
         public IActionResult OnPost()
         {
-
-            if(profesor.id>0)
+            if(!ModelState.IsValid)
             {
-                profesor = _repoProfesor.UpdateProfesor(profesor);
+                //return RedirectToPage("./Personas");
+                return Page();                
+            }else{
+                if(profesor.id>0)
+                {
+                    profesor = _repoProfesor.UpdateProfesor(profesor);
+                }else{
+                    _repoProfesor.AddProfesor(profesor);
+                }     
+                return RedirectToPage("./Personas");
             }     
-            return Page();       
         }
 
     }

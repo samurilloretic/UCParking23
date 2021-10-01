@@ -20,6 +20,10 @@
                 <a class="btn btn-secondary table-btn" asp-page="./Editar" asp-route-profesorId="@profesor.id">
                 <i class="fas fa-address-book fa-lg"></i></a>
             </td>
+            <td>
+                <a class="btn btn-danger table-btn" asp-page="./Eliminar" asp-route-profesorId="@profesor.id">
+                <i class="fas fa-book-dead fa-lg"></i></a>
+            </td>
         </tr>
     }
 </table>

@@ -2,18 +2,24 @@ using UCP.App.Dominio;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
 namespace UCP.App.Persistencia
 
 {
     public class RepositorioProfesor : IRepositorioProfesor
     {
-        private readonly AppContext _appContext;
-
+        private static AppContext _appContext;
+        IEnumerable<Profesor> profesores;
         public RepositorioProfesor(AppContext appContext)
         {
             _appContext = appContext;
         }
 
+        public RepositorioProfesor(IEnumerable<Profesor> profesores)
+        {
+            this.profesores = profesores;
+        }
+        
         Profesor IRepositorioProfesor.AddProfesor(Profesor profesor)
         {
             //var profesorAdicionado = _appContext.Profesores.AddProfesor(profesor);
@@ -63,7 +69,34 @@ namespace UCP.App.Persistencia
 
         IEnumerable<Profesor> IRepositorioProfesor.GetAllProfesores()
         {
+            var Profesores = _appContext.Profesores;
+            foreach (var profesor in Profesores)
+            {
+                Console.WriteLine(profesor.apellidos);
+            }
             return _appContext.Profesores;
+        }
+
+        Profesor IRepositorioProfesor.GetProfesorConVehiculo(int idProfesor)
+        {
+            //var profesoresEncontrados= _appContext.Profesores.Include(profesor => profesor.vehiculo_1).ToList();
+            var profesorEncontrado= _appContext.Profesores.Include(p => p.vehiculo_1).FirstOrDefault(p=>p.id==idProfesor);
+            /*foreach (var profesor in profesoresEncontrados)
+            {
+                if(profesor.id==idProfesor)
+                {
+                    if(profesor.vehiculo_1!=null)
+                    {
+                        Console.WriteLine(profesor.vehiculo_1.id);
+                        Console.WriteLine(_appContext.Vehiculos.FirstOrDefault(v=>v.id==profesor.vehiculo_1.id).marca);
+                        Console.WriteLine(_appContext.Vehiculos.FirstOrDefault(v=>v.id==profesor.vehiculo_1.id).modelo);
+                        Console.WriteLine(_appContext.Vehiculos.FirstOrDefault(v=>v.id==profesor.vehiculo_1.id).placa);
+                        Console.WriteLine(_appContext.Vehiculos.FirstOrDefault(v=>v.id==profesor.vehiculo_1.id).tipoVehiculo);
+                        return profesor;
+                    }
+                }
+            }*/
+            return profesorEncontrado;
         }
     }
 }

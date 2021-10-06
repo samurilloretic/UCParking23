@@ -14,9 +14,17 @@ namespace UCP.App.Frontend.Pages
         
         public IEnumerable<Profesor> Profesores{get;set;}
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            Console.WriteLine("Retorno a esta página");
+            
+            
             Profesores = _repoProfesor.GetAllProfesores();
+            /*foreach (var profesor in Profesores)
+            {
+                Console.WriteLine(profesor.apellidos);
+            }*/
+            return Page();
         }
     }
 }

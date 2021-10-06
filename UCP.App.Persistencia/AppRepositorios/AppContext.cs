@@ -13,6 +13,8 @@ namespace UCP.App.Persistencia
 
         public DbSet<Visitante> Visitantes{get;set;}
 
+        public DbSet<Vehiculo> Vehiculos{get;set;}
+
         public DbSet<PersonalAdministrativo> Administrativos{get;set;}
 
         public DbSet<Parqueadero> Parqueaderos {get; set;}

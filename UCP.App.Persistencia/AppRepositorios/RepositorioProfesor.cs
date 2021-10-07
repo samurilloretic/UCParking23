@@ -80,7 +80,7 @@ namespace UCP.App.Persistencia
         Profesor IRepositorioProfesor.GetProfesorConVehiculo(int idProfesor)
         {
             //var profesoresEncontrados= _appContext.Profesores.Include(profesor => profesor.vehiculo_1).ToList();
-            var profesorEncontrado= _appContext.Profesores.Include(p => p.vehiculo_1).FirstOrDefault(p=>p.id==idProfesor);
+            var profesorEncontrado= _appContext.Profesores.Include(p => p.vehiculo_1).Include(p=>p.vehiculo_2).FirstOrDefault(p=>p.id==idProfesor);
             /*foreach (var profesor in profesoresEncontrados)
             {
                 if(profesor.id==idProfesor)

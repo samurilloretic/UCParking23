@@ -9,12 +9,15 @@ namespace UCP.App.Consola
     class Program
     {
         private static IRepositorioProfesor _repoProfesor = new RepositorioProfesor(new Persistencia.AppContext());
+        private static IRepositorioVehiculo _repoVehiculo = new RepositorioVehiculo(new Persistencia.AppContext());
+        private static IRepositorioParqueadero _repoParqueadero = new RepositorioParqueadero(new Persistencia.AppContext());
+        
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Esto es un mensaje por consola");
             //AddProfesor();
-            Profesor profesor = BuscarProfesorConVehiculo(13);
+            /*Profesor profesor = BuscarProfesorConVehiculo(13);
             Console.WriteLine(profesor.nombre);
             Console.WriteLine(profesor.apellidos);
             Console.WriteLine(profesor.facultad);
@@ -23,7 +26,7 @@ namespace UCP.App.Consola
             Console.WriteLine(profesor.vehiculo_1.modelo);//no funciona
             Console.WriteLine(profesor.vehiculo_1.placa);//no funciona
             Console.WriteLine(profesor.vehiculo_1.tipoVehiculo);//no funciona
-            Console.WriteLine(profesor.vehiculo_2.marca);//no funciona
+            Console.WriteLine(profesor.vehiculo_2.marca);//no funciona*/
             //BuscarProfesor(1);
             //BuscarProfesores();
             //EliminarProfesor(3);
@@ -31,7 +34,13 @@ namespace UCP.App.Consola
             Vehiculo vehiculo_p = new Vehiculo{marca="Toyota", modelo="Corola",placa="COR123",tipoVehiculo=TipoVehiculo.Automovil};
             Vehiculo vehiculo_s = new Vehiculo{marca="Kia", modelo="Sportage",placa="SPO542",tipoVehiculo=TipoVehiculo.Camioneta};
 
-            AdicionaProfesorConVehiculo(vehiculo_p,vehiculo_s);
+            //AdicionaProfesorConVehiculo(vehiculo_p,vehiculo_s);*/
+            //Vehiculo automovil = GetVehiculo(26);
+            Parqueadero nuevoparqueadero = AddParqueadero();
+            Console.WriteLine(nuevoparqueadero.direccion);
+            //AdicionarVehiculo(5,automovil,null);
+
+            //AgregarVehiculo();
             //BuscarProfesores();                        
 
             //BuscarProfesores();
@@ -159,6 +168,67 @@ namespace UCP.App.Consola
         {
             var profesor = _repoProfesor.GetProfesorConVehiculo(idProfesor);        
             return profesor; 
+        }
+
+        private static void AdicionarVehiculo(int idProfesor, Vehiculo vehiculo1, Vehiculo vehiculo2)
+        {
+            var profesor = _repoProfesor.GetProfesorConVehiculo(idProfesor);
+            if(profesor.vehiculo_1==null & vehiculo1!=null)
+            {
+                profesor.vehiculo_1=vehiculo1;
+            }else{
+                Console.WriteLine("Este profesor ya tiene un vehiculo asignado, verificar parametro incompleto");
+            }
+            if (profesor.vehiculo_2==null & vehiculo2!=null)
+            {
+                profesor.vehiculo_2=vehiculo2;
+            }else{
+                Console.WriteLine("Este profesor ya tiene un vehiculo asignado, verificar parametro incompleto");
+            }
+            _repoProfesor.UpdateProfesor(profesor);
+        }
+
+        private static void AgregarVehiculo()
+        {
+            var vehiculo = new Vehiculo
+            {
+                marca="Chevrolet",
+                modelo="MHH432",
+                placa="Koleos",
+                tipoVehiculo=TipoVehiculo.Automovil
+            };
+            Vehiculo vehiculo_retornado=_repoVehiculo.AddVehiculo(vehiculo);
+            if(vehiculo_retornado!=null)
+            {
+                Console.WriteLine("Se registró un vehiculo nuevo");
+            }
+        }
+
+        private static Vehiculo GetVehiculo(int idVehiculo){
+            return _repoVehiculo.GetVehiculo(idVehiculo);
+        }
+
+        private static Parqueadero AddParqueadero()
+        {
+            var parqueadero = new Parqueadero
+            {
+                direccion="Carrera 10 #20a -18",
+                numeroPuestos=100,
+                picoPlaca="0 y 9",
+                horario="Lunes a Sábado 8 a 22 horas",
+                puestos=new List<Puesto>{
+                    new Puesto{tipoVehiculo=TipoVehiculo.Automovil,numeroParquadero=1,estado=Estado.ocupado,vehiculo=new Vehiculo{marca="Audi",modelo="tt",placa="TTT123",tipoVehiculo=TipoVehiculo.Automovil}},
+                    new Puesto{tipoVehiculo=TipoVehiculo.Motocicleta,numeroParquadero=2,estado=Estado.ocupado,vehiculo=new Vehiculo{marca="KTM",modelo="Duke",placa="ABC12A",tipoVehiculo=TipoVehiculo.Motocicleta}},
+                    new Puesto{tipoVehiculo=TipoVehiculo.Automovil,numeroParquadero=3,estado=Estado.ocupado,vehiculo=new Vehiculo{marca="FIAT",modelo="uno",placa="JKR123",tipoVehiculo=TipoVehiculo.Automovil}}
+                },
+                personasAutorizadas=new List<Persona>{
+                    new Persona{nombre="Jacobo",apellidos="Jaramillo"},
+                    new Persona{nombre="Tatiana",apellidos="Gómez"}
+                },
+                transaccion=null                
+            };
+            Parqueadero parqueadero_retornado =_repoParqueadero.AddParqueadero(parqueadero);
+            return parqueadero_retornado;
         }
     }
 }

@@ -16,7 +16,12 @@ namespace UCP.App.Consola
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Esto es un mensaje por consola");
-            //AddProfesor();
+            Profesor nuevoProfesor =AddProfesor();
+            Vehiculo nuevoVehiculo = AgregarVehiculo();
+            AdicionarVehiculo(24,null,nuevoVehiculo);
+            Puesto nuevoPuesto =new Puesto{tipoVehiculo=TipoVehiculo.Automovil,numeroParquadero=1,estado=Estado.ocupado,vehiculo=nuevoVehiculo};
+            Transaccion nuevaTransaccion = new Transaccion{horaIngreso=new DateTime(2021,10,06,10,30,15),horaSalida=new DateTime(2021,10,06,12,15,12),valorHora=1500,vehiculo=nuevoVehiculo};
+            AdicionarDatosParqueadero(1,nuevoPuesto, nuevoProfesor, nuevaTransaccion);
             /*Profesor profesor = BuscarProfesorConVehiculo(13);
             Console.WriteLine(profesor.nombre);
             Console.WriteLine(profesor.apellidos);
@@ -36,7 +41,7 @@ namespace UCP.App.Consola
 
             //AdicionaProfesorConVehiculo(vehiculo_p,vehiculo_s);*/
             //Vehiculo automovil = GetVehiculo(26);
-            Parqueadero nuevoparqueadero = AddParqueadero();
+            //Parqueadero nuevoparqueadero = AddParqueadero();
             Console.WriteLine(nuevoparqueadero.direccion);
             //AdicionarVehiculo(5,automovil,null);
 
@@ -51,26 +56,27 @@ namespace UCP.App.Consola
 
         //AddProfesor
 
-        private static void AddProfesor()
+        private static Profesor AddProfesor()
         {
             var profesor = new Profesor 
             {
-               nombre = "Jairo",
-               apellidos = "Maya",
-               identificacion = 123100001,
-               correo =  "jairomaya.tic@ucaldas.edu.co",
-               telefono ="30231000001",
+               nombre = "Mauricio",
+               apellidos = "Orozco",
+               identificacion = 10041005,
+               correo =  "mauricioorozco.tic@ucaldas.edu.co",
+               telefono ="30130130303",
                vehiculo_1 = null,
                vehiculo_2 = null,
                facultad ="Ciencias Computacionales",
                departamento = "Ingeniería",
-               cubiculo ="Tres" 
+               cubiculo ="ocho" 
             };
 
             Console.WriteLine(profesor.nombre+"\n Cubiculo= "+profesor.cubiculo);
             Profesor profesor_retornado = _repoProfesor.AddProfesor(profesor);
             if (profesor_retornado!=null)
                 Console.WriteLine("Se registró un profesor en la base de datos");
+            return profesor_retornado;
         }
         //GetProfesor
         private static Profesor BuscarProfesor(int idProfesor)
@@ -188,7 +194,7 @@ namespace UCP.App.Consola
             _repoProfesor.UpdateProfesor(profesor);
         }
 
-        private static void AgregarVehiculo()
+        private static Vehiculo AgregarVehiculo()
         {
             var vehiculo = new Vehiculo
             {
@@ -202,6 +208,7 @@ namespace UCP.App.Consola
             {
                 Console.WriteLine("Se registró un vehiculo nuevo");
             }
+            return vehiculo_retornado;
         }
 
         private static Vehiculo GetVehiculo(int idVehiculo){
@@ -229,6 +236,22 @@ namespace UCP.App.Consola
             };
             Parqueadero parqueadero_retornado =_repoParqueadero.AddParqueadero(parqueadero);
             return parqueadero_retornado;
+        }
+
+        private static void AdicionarDatosParqueadero(int idParqueadero,Puesto puesto, Persona persona, Transaccion transaccion)
+        {
+            var parqueaderoRecuperado = _repoParqueadero.GetParqueadero(idParqueadero);
+            {
+                if (parqueaderoRecuperado.puestos!=null)
+                {
+                    parqueaderoRecuperado.puestos.Add(puesto);
+                }else
+                {
+                    parqueaderoRecuperado.puestos = new List<Puesto>();
+                    parqueaderoRecuperado.puestos.Add(puesto);
+                }
+                _repoParqueadero.UpdateParqueadero(parqueaderoRecuperado);
+            }
         }
     }
 }

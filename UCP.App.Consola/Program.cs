@@ -16,7 +16,7 @@ namespace UCP.App.Consola
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Esto es un mensaje por consola");
-            Profesor nuevoProfesor =AddProfesor();
+            /*Profesor nuevoProfesor =AddProfesor();
             Vehiculo nuevoVehiculo = AgregarVehiculo();
             AdicionarVehiculo(24,null,nuevoVehiculo);
             Puesto nuevoPuesto =new Puesto{tipoVehiculo=TipoVehiculo.Automovil,numeroParquadero=1,estado=Estado.ocupado,vehiculo=nuevoVehiculo};
@@ -36,13 +36,13 @@ namespace UCP.App.Consola
             //BuscarProfesores();
             //EliminarProfesor(3);
             //ActualizarProfesor();
-            Vehiculo vehiculo_p = new Vehiculo{marca="Toyota", modelo="Corola",placa="COR123",tipoVehiculo=TipoVehiculo.Automovil};
-            Vehiculo vehiculo_s = new Vehiculo{marca="Kia", modelo="Sportage",placa="SPO542",tipoVehiculo=TipoVehiculo.Camioneta};
+           // Vehiculo vehiculo_p = new Vehiculo{marca="Toyota", modelo="Corola",placa="COR123",tipoVehiculo=TipoVehiculo.Automovil};
+            //Vehiculo vehiculo_s = new Vehiculo{marca="Kia", modelo="Sportage",placa="SPO542",tipoVehiculo=TipoVehiculo.Camioneta};
 
             //AdicionaProfesorConVehiculo(vehiculo_p,vehiculo_s);*/
             //Vehiculo automovil = GetVehiculo(26);
             //Parqueadero nuevoparqueadero = AddParqueadero();
-            Console.WriteLine(nuevoparqueadero.direccion);
+            //Console.WriteLine(nuevoparqueadero.direccion);
             //AdicionarVehiculo(5,automovil,null);
 
             //AgregarVehiculo();
@@ -50,6 +50,25 @@ namespace UCP.App.Consola
 
             //BuscarProfesores();
 
+
+            /*IEnumerable<Parqueadero> parqueaderos = BuscarParquederoSegunPuesto(Estado.ocupado);
+            foreach (var parqueadero in parqueaderos)
+            {
+                Console.WriteLine(parqueadero.direccion);
+            }
+            Console.WriteLine("Fin del programa");
+            */
+            /*IEnumerable<Parqueadero> parqueaderos = _repoParqueadero.GetParqueaderoConVehiculo(TipoVehiculo.Motocicleta);
+            foreach (var parqueadero in parqueaderos)
+            {
+                Console.WriteLine(parqueadero.direccion);
+            }*/
+
+            IEnumerable<Parqueadero> parqueaderos = _repoParqueadero.GetParqueaderoConPuestoyTV(Estado.libre,TipoVehiculo.Automovil);
+            foreach (var parqueadero in parqueaderos)
+            {
+                Console.WriteLine(parqueadero.direccion);
+            }
             Console.WriteLine("Fin del programa");
         }
 
@@ -252,6 +271,11 @@ namespace UCP.App.Consola
                 }
                 _repoParqueadero.UpdateParqueadero(parqueaderoRecuperado);
             }
+        }
+
+        private static IEnumerable<Parqueadero> BuscarParquederoSegunPuesto(Estado estado)
+        {
+            return _repoParqueadero.GetParqueaderoConPuesto(estado);
         }
     }
 }

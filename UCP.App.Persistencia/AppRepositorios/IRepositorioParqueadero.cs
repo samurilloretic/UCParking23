@@ -15,6 +15,12 @@ namespace UCP.App.Persistencia
         //DeleteParqueadero
         void DeleteParqueadero(int idParqueadero);
         //GetParqueadero
-        Parqueadero GetParqueadero(int idParqueadero);       
+        Parqueadero GetParqueadero(int idParqueadero);  
+        //GetParqueaderoConPuesto
+        IEnumerable<Parqueadero> GetParqueaderoConPuesto(Estado estado);
+        //GetParqueaderoConTipoVehiculo
+        IEnumerable<Parqueadero> GetParqueaderoConVehiculo(TipoVehiculo tipoVehiculo);
+        //GetParqueaderoConPuestoyTV     
+        IEnumerable<Parqueadero> GetParqueaderoConPuestoyTV(Estado estado,TipoVehiculo tipoVehiculo);
     }
 }

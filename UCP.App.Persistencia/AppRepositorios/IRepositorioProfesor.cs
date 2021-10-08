@@ -18,5 +18,8 @@ namespace UCP.App.Persistencia
         Profesor GetProfesor(int idProfesor);
         //GetProfesorConVehiculo
         Profesor GetProfesorConVehiculo(int idProfesor);
+
+        
+        
     }
 }

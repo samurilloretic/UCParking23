@@ -74,6 +74,18 @@ namespace UCP.App.Persistencia
             return _appContext.Parqueaderos;
         }
 
-        
+        IEnumerable<Parqueadero> IRepositorioParqueadero.GetParqueaderoConPuesto(Estado estado)
+        {
+            return _appContext.Parqueaderos.Where(p=>p.puestos.Any(s=>s.estado==estado)).ToList();
+        }
+
+        IEnumerable<Parqueadero> IRepositorioParqueadero.GetParqueaderoConVehiculo(TipoVehiculo tipoVehiculo)
+        {
+            return _appContext.Parqueaderos.Where(p=>p.puestos.Any(s=>s.tipoVehiculo==tipoVehiculo)).ToList();
+        }
+        IEnumerable<Parqueadero> IRepositorioParqueadero.GetParqueaderoConPuestoyTV(Estado estado,TipoVehiculo tipoVehiculo)
+        {
+            return _appContext.Parqueaderos.Where(p=>p.puestos.Any(s=>s.tipoVehiculo==tipoVehiculo && s.estado==estado)).ToList();
+        }
     }
 }
